@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}{{ event.name }}{% endblock %}
+
+{% block content %}
+<h2>{{ event.name }}</h2>
+<p><strong>Erstellt am:</strong> {{ event.created_at }}</p>
+
+<!-- Flash-Meldungen -->
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-info">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+<a href="{{ url_for('events.list_events') }}" class="btn btn-secondary mb-3">← Zurück zu Events</a>
+
+<div class="row">
+  <!-- Teilnehmer -->
+  <div class="col-lg-6 col-md-12">
+    <div class="card mb-4">
+      <div class="card-header">
+        <h5>👥 Teilnehmer</h5>
+      </div>
+      <div class="card-body">
+        {% if users %}
+          <ul class="mb-3">
+            {% for user in users %}
+              <li>{{ user.username }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>Keine Teilnehmer vorhanden.</p>
+        {% endif %}
+
+        <form method="POST" action="{{ url_for('events.add_participant', event_id=event.id) }}" class="d-flex">
+          <input type="text" name="username" placeholder="Benutzername" class="form-control me-2" required>
+          <button type="submit" class="btn btn-primary btn-sm">Hinzufügen</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ausgaben -->
+  <div class="col-lg-6 col-md-12">
+    <div class="card mb-4">
+      <div class="card-header">
+        <h5>💰 Ausgaben</h5>
+      </div>
+      <div class="card-body">
+        {% if expenses %}
+          <ul class="list-group mb-3">
+            {% for expense in expenses %}
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ expense.title }} ({{ expense.amount }} €)
+                <small class="text-muted">Bezahlt von: {{ expense.payer_name }}</small>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>Noch keine Ausgaben.</p>
+        {% endif %}
+        <a href="{{ url_for('events.add_expense', event_id=event.id) }}" class="btn btn-success btn-sm">Ausgabe hinzufügen</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="alert alert-info">
+  <h5>Nächste Schritte:</h5>
+  <ol>
+    <li>Teilnehmer hinzufügen</li>
+    <li>Ausgaben eintragen</li>
+    <li>Schulden berechnen (bald verfügbar)</li>
+  </ol>
+</div>
+{% endblock %}

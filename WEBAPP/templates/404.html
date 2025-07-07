@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Seite nicht gefunden - QuickSplit{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12 text-center">
+        <h1 class="display-1">😕</h1>
+        <h2>Seite nicht gefunden</h2>
+        <p class="lead">Die gesuchte Seite existiert leider nicht.</p>
+        <a href="{{ url_for('index') }}" class="btn btn-primary">Zurück zur Startseite</a>
+    </div>
+</div>
+{% endblock %}

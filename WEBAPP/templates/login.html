@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Login - QuickSplit{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Anmelden</h2>
+
+<form method="POST" action="{{ url_for('auth.login') }}">
+    <div class="mb-3">
+        <label for="username" class="form-label">Benutzername</label>
+        <input type="text" class="form-control" name="username" id="username" required>
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Passwort</label>
+        <input type="password" class="form-control" name="password" id="password" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>
+
+<p class="mt-3">Noch kein Konto? <a href="{{ url_for('auth.register') }}" class="btn btn-outline-secondary btn-sm">Jetzt registrieren</a></p>
+{% endblock %}

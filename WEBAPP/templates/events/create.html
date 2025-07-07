@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Event erstellen{% endblock %}
+
+{% block content %}
+<h2>Neues Event erstellen</h2>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-danger">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+<div class="card">
+  <div class="card-body">
+    <form method="POST">
+      <div class="mb-3">
+        <label for="name">Event-Name:</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="z.B. Urlaub Italien" required>
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Event erstellen</button>
+      <a href="{{ url_for('events.list_events') }}" class="btn btn-secondary">Zurück</a>
+    </form>
+  </div>
+</div>
+
+<br>
+<div class="card bg-light">
+  <div class="card-body">
+    <h5>Tipps:</h5>
+    <ul>
+      <li>Wähle einen guten Namen</li>
+      <li>Du kannst später Leute hinzufügen</li>
+      <li>Dann könnt ihr Ausgaben eintragen</li>
+    </ul>
+  </div>
+</div>
+{% endblock %} 

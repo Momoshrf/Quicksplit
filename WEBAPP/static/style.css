@@ -1,0 +1,51 @@
+/* Eigene CSS-Anpassungen für QuickSplit */
+/* Quellen: W3Schools, Bootstrap Doku, Stack Overflow */
+
+body {
+    background-color: #f8f9fa; /* Bootstrap standard background */
+}
+
+/* Navigation schöner machen - von Bootstrap Navbar Beispielen */
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* Karten etwas schöner - Transition von w3schools.com/css/css3_transitions.asp */
+.card {
+    transition: transform 0.2s;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* MDN box-shadow Doku */
+}
+
+.card:hover {
+    transform: translateY(-2px); /* Hover-Effekt aus CSS Tutorial */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Gradient von cssgradient.io */
+.jumbotron {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+/* Buttons runder machen - aus Bootstrap Button Beispielen */
+.btn {
+    border-radius: 25px;
+    padding: 10px 20px;
+}
+
+/* Responsive - von w3schools.com/css/css_rwd_mediaqueries.asp */
+@media (max-width: 768px) {
+    .card {
+        margin-bottom: 20px;
+    }
+    
+    .jumbotron {
+        padding: 30px 20px !important;
+    }
+    
+    .display-4 {
+        font-size: 2rem; /* Kleinere Schrift für Mobile */
+    }
+}

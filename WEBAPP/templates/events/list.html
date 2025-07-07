@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Events{% endblock %}
+
+{% block content %}
+<h2>Meine Events</h2>
+
+<a href="{{ url_for('events.create_event') }}" class="btn btn-primary">Neues Event</a>
+
+<br><br>
+
+<!-- Flash Messages - haben wir von Flask Tutorial -->
+{# {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %} #}
+
+{% if events %}
+  <div class="row">
+    {% for event in events %}
+    <div class="col-md-4">
+      <div class="card" style="margin-bottom: 20px;">
+        <div class="card-body">
+          <h5>{{ event.name }}</h5>
+          <p>Erstellt: {{ event.created_at }}</p>
+          <a href="{{ url_for('events.show_event', event_id=event.id) }}" class="btn btn-primary">Öffnen</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="alert alert-info">
+    <h4>Keine Events!</h4>
+    <p>Du hast noch keine Events. Erstelle dein erstes Event!</p>
+  </div>
+{% endif %}
+{% endblock %} 
