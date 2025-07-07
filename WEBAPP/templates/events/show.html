@@ -5,7 +5,6 @@
 <h2>{{ event.name }}</h2>
 <p><strong>Erstellt am:</strong> {{ event.created_at }}</p>
 
-<!-- Flash-Meldungen -->
 {% with messages = get_flashed_messages() %}
   {% if messages %}
     {% for message in messages %}
@@ -20,24 +19,22 @@
   <!-- Teilnehmer -->
   <div class="col-lg-6 col-md-12">
     <div class="card mb-4">
-      <div class="card-header">
-        <h5>👥 Teilnehmer</h5>
-      </div>
+      <div class="card-header"><h5>👥 Teilnehmer</h5></div>
       <div class="card-body">
-        {% if users %}
-          <ul class="mb-3">
-            {% for user in users %}
-              <li>{{ user.username }}</li>
-            {% endfor %}
-          </ul>
-        {% else %}
-          <p>Keine Teilnehmer vorhanden.</p>
-        {% endif %}
+      {% if participants %}
+        <ul>
+          {% for person in participants %}
+            <li>{{ person.name }}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>Keine Teilnehmer vorhanden.</p>
+      {% endif %}
 
-        <form method="POST" action="{{ url_for('events.add_participant', event_id=event.id) }}" class="d-flex">
-          <input type="text" name="username" placeholder="Benutzername" class="form-control me-2" required>
-          <button type="submit" class="btn btn-primary btn-sm">Hinzufügen</button>
-        </form>
+      <form method="POST" action="{{ url_for('events.add_participant', event_id=event.id) }}" class="d-flex">
+        <input type="text" name="name" placeholder="Teilnehmername" class="form-control me-2" required>
+        <button type="submit" class="btn btn-primary btn-sm">Hinzufügen</button>
+      </form>
       </div>
     </div>
   </div>
@@ -45,9 +42,7 @@
   <!-- Ausgaben -->
   <div class="col-lg-6 col-md-12">
     <div class="card mb-4">
-      <div class="card-header">
-        <h5>💰 Ausgaben</h5>
-      </div>
+      <div class="card-header"><h5>💰 Ausgaben</h5></div>
       <div class="card-body">
         {% if expenses %}
           <ul class="list-group mb-3">

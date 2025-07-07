@@ -4,7 +4,6 @@
 {% block content %}
 <h2>Neue Ausgabe hinzufügen</h2>
 
-<!-- Flash-Meldungen -->
 {% with messages = get_flashed_messages() %}
   {% if messages %}
     {% for message in messages %}
@@ -16,7 +15,7 @@
 <form method="POST">
   <div class="mb-3">
     <label for="title" class="form-label">Titel der Ausgabe</label>
-    <input type="text" class="form-control" name="title" id="title" placeholder="z.B. Pizza, Benzin" required>
+    <input type="text" class="form-control" name="title" id="title" required>
   </div>
 
   <div class="mb-3">
@@ -27,19 +26,19 @@
   <div class="mb-3">
     <label for="payer" class="form-label">Bezahlt von</label>
     <select name="payer" id="payer" class="form-select" required>
-      {% for user in participants %}
-        <option value="{{ user.id }}">{{ user.username }}</option>
+      {% for participant in participants %}
+        <option value="{{ participant.id }}">{{ participant.name }}</option>
       {% endfor %}
     </select>
   </div>
 
   <div class="mb-3">
     <label class="form-label">Aufteilen auf:</label>
-    {% for user in participants %}
+    {% for participant in participants %}
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="split_users" value="{{ user.id }}" id="user{{ user.id }}" checked>
-        <label class="form-check-label" for="user{{ user.id }}">
-          {{ user.username }}
+        <input class="form-check-input" type="checkbox" name="split_users" value="{{ participant.id }}" id="participant{{ participant.id }}" checked>
+        <label class="form-check-label" for="participant{{ participant.id }}">
+          {{ participant.name }}
         </label>
       </div>
     {% endfor %}

@@ -3,16 +3,16 @@ import sqlite3
 DATABASE = 'quicksplit.db'
 
 def get_db_connection():
-    """Create a connection to the SQLite database."""
+    """Verbindung zur SQLite-Datenbank herstellen."""
     conn = sqlite3.connect(DATABASE)
     conn.row_factory = sqlite3.Row
     return conn
 
 def init_database():
-    """Create all necessary tables if they don't exist."""
+    """Alle benötigten Tabellen erstellen, falls sie noch nicht existieren."""
     conn = get_db_connection()
 
-    # Users table
+    # Benutzer (App-User)
     conn.execute('''
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -21,29 +21,29 @@ def init_database():
         )
     ''')
 
-    # Events table
+    # Events
     conn.execute('''
         CREATE TABLE IF NOT EXISTS events (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT NOT NULL,
             owner_id INTEGER,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (owner_id) REFERENCES users (id)
+            FOREIGN KEY (owner_id) REFERENCES users(id)
         )
     ''')
 
-    # Event participants (many-to-many)
+    # Teilnehmer eines Events (viele-zu-viele Beziehung)
     conn.execute('''
         CREATE TABLE IF NOT EXISTS event_participants (
             event_id INTEGER NOT NULL,
             user_id INTEGER NOT NULL,
             PRIMARY KEY (event_id, user_id),
-            FOREIGN KEY (event_id) REFERENCES events (id),
-            FOREIGN KEY (user_id) REFERENCES users (id)
+            FOREIGN KEY (event_id) REFERENCES events(id),
+            FOREIGN KEY (user_id) REFERENCES users(id)
         )
     ''')
 
-    # Expenses table
+    # Ausgaben in einem Event
     conn.execute('''
         CREATE TABLE IF NOT EXISTS expenses (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -52,26 +52,36 @@ def init_database():
             date DATE DEFAULT CURRENT_DATE,
             payer_id INTEGER NOT NULL,
             event_id INTEGER NOT NULL,
-            FOREIGN KEY (payer_id) REFERENCES users (id),
-            FOREIGN KEY (event_id) REFERENCES events (id)
+            FOREIGN KEY (payer_id) REFERENCES users(id),
+            FOREIGN KEY (event_id) REFERENCES events(id)
         )
     ''')
 
-    # Expense participants (split per person)
+    # Wer teilt sich die Ausgabe und wie viel?
     conn.execute('''
         CREATE TABLE IF NOT EXISTS expense_participants (
             expense_id INTEGER NOT NULL,
             user_id INTEGER NOT NULL,
             amount_owed REAL NOT NULL,
             PRIMARY KEY (expense_id, user_id),
-            FOREIGN KEY (expense_id) REFERENCES expenses (id),
-            FOREIGN KEY (user_id) REFERENCES users (id)
+            FOREIGN KEY (expense_id) REFERENCES expenses(id),
+            FOREIGN KEY (user_id) REFERENCES users(id)
         )
     ''')
+    
+# Lokale Teilnehmer (nicht registrierte User)
+    conn.execute('''
+    CREATE TABLE IF NOT EXISTS participants (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        event_id INTEGER NOT NULL,
+        FOREIGN KEY (event_id) REFERENCES events(id)
+    )
+''')
 
     conn.commit()
     conn.close()
-    print(" Datenbank wurde initialisiert!")
+    print(" Datenbank wurde erfolgreich initialisiert!")
 
 if __name__ == '__main__':
     init_database()
