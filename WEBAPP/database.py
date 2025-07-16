@@ -32,7 +32,7 @@ def init_database():
         )
     ''')
 
-    # Teilnehmer eines Events (viele-zu-viele Beziehung)
+    # Teilnehmer eines Events (User nimmt an Event teil)
     conn.execute('''
         CREATE TABLE IF NOT EXISTS event_participants (
             event_id INTEGER NOT NULL,
@@ -68,16 +68,26 @@ def init_database():
             FOREIGN KEY (user_id) REFERENCES users(id)
         )
     ''')
-    
-# Lokale Teilnehmer (nicht registrierte User)
+
+    # Lokale Teilnehmer (nicht registrierte Benutzer)
     conn.execute('''
-    CREATE TABLE IF NOT EXISTS participants (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL,
-        event_id INTEGER NOT NULL,
-        FOREIGN KEY (event_id) REFERENCES events(id)
-    )
-''')
+        CREATE TABLE IF NOT EXISTS participants (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            event_id INTEGER NOT NULL,
+            FOREIGN KEY (event_id) REFERENCES events(id)
+        )
+    ''')
+
+    # Neue Spalte 'paid' zur Tabelle 'expense_participants' hinzufügen (falls noch nicht vorhanden)
+    try:
+        conn.execute('ALTER TABLE expense_participants ADD COLUMN paid BOOLEAN DEFAULT 0')
+        print("Spalte 'paid' zur Tabelle 'expense_participants' hinzugefügt.")
+    except sqlite3.OperationalError as e:
+        if "duplicate column name" in str(e).lower():
+            print("Spalte 'paid' existiert bereits.")
+        else:
+            raise
 
     conn.commit()
     conn.close()

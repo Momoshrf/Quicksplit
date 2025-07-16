@@ -1,8 +1,8 @@
 from flask import Flask, render_template, redirect, url_for, session
-from flask import Flask
 from database import init_database
 from routes.events import events_bp
 from auth import auth_bp
+from routes.expenses import expenses_bp
 
 
 
@@ -16,6 +16,9 @@ app.register_blueprint(events_bp)
 
 # Auth Blueprint registrieren
 app.register_blueprint(auth_bp)
+
+app.register_blueprint(expenses_bp)
+
 
 # Datenbank beim Start initialisieren
 init_database()

@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}Ausgaben-Übersicht{% endblock %}
+
+{% block content %}
+<h2>💰 Ausgabenübersicht</h2>
+
+<h4>🔁 Rückzahlungsvorschläge</h4>
+{% if transactions %}
+  <ul>
+    {% for t in transactions %}
+      <li><strong>{{ t.from }}</strong> → <strong>{{ t.to }}</strong>: {{ t.amount }} €</li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>Alle Schulden sind ausgeglichen 🎉</p>
+{% endif %}
+
+<hr>
+
+<h4>📊 Saldos</h4>
+
+<table class="table table-bordered table-striped align-middle">
+  <thead>
+    <tr>
+      <th>Teilnehmer</th>
+      <th>Status</th>
+      <th>Saldo</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for uid, saldo in balances.items() %}
+    <tr>
+      <td><strong>{{ names[uid] }}</strong></td>
+      <td>
+        {% if saldo > 0 %}
+          <span class="text-success">💸 Forderung</span>
+        {% elif saldo < 0 %}
+          <span class="text-danger">💰 Schulden</span>
+        {% else %}
+          <span class="text-muted">✅ Ausgeglichen</span>
+        {% endif %}
+      </td>
+      <td>
+        {% if saldo > 0 %}
+          <span class="text-success">+{{ saldo | round(2) }} €</span>
+        {% elif saldo < 0 %}
+          <span class="text-danger">{{ saldo | round(2) }} €</span>
+        {% else %}
+          <span class="text-muted">0,00 €</span>
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+<hr class="my-5">
+
+<h4>📂 Detailansicht der Ausgaben</h4>
+
+{% for exp in all_expenses %}
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5>{{ exp.title }} <small class="text-muted">({{ exp.amount }} €)</small></h5>
+      <p><strong>Bezahlt von:</strong> {{ exp.payer_name }}</p>
+      <p><strong>Aufgeteilt auf:</strong></p>
+      <ul>
+        {% for user in exp.participants %}
+          <li>
+            {{ user.name }}: {{ user.amount_owed | round(2) }} €
+            {% if user.name != exp.payer_name %}
+              {% if user.paid %}
+                <span class="text-success">✔ bereits bezahlt</span>
+              {% else %}
+                <span class="text-danger">→ schuldet {{ exp.payer_name }}</span>
+              {% endif %}
+              <form method="POST"
+                    action="{{ url_for('expenses.toggle_paid', expense_id=exp.id, user_id=user.user_id) }}"
+                    style="display:inline;">
+                <input type="checkbox" onchange="this.form.submit()" {% if user.paid %}checked{% endif %}>
+              </form>
+            {% else %}
+              <span class="text-success">✓ hat bezahlt</span>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+{% endfor %}
+
+<a href="{{ url_for('events.show_event', event_id=event_id) }}" class="btn btn-secondary mt-4">Zurück zum Event</a>
+{% endblock %}

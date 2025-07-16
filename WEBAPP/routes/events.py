@@ -39,7 +39,7 @@ def create_event():
         )
         event_id = cursor.lastrowid
 
-        # Namen des eingeloggten Users holen
+        
         user = conn.execute('SELECT username FROM users WHERE id = ?', (session['user_id'],)).fetchone()
         if user:
             conn.execute(
@@ -56,36 +56,81 @@ def create_event():
     return render_template('events/create.html')
 
 
-
 @events_bp.route('/<int:event_id>')
 def show_event(event_id):
     if 'user_id' not in session:
         return redirect(url_for('auth.login'))
 
     conn = get_db_connection()
+
     event = conn.execute('SELECT * FROM events WHERE id = ?', (event_id,)).fetchone()
 
-    if not event:
+    if event is None:
         conn.close()
         return "Event nicht gefunden", 404
 
-    participants = conn.execute(
-        'SELECT * FROM participants WHERE event_id = ? ORDER BY name ASC',
-        (event_id,)
-    ).fetchall()
+    
+    participants = conn.execute('''
+        SELECT * FROM participants WHERE event_id = ? ORDER BY name
+    ''', (event_id,)).fetchall()
 
+    # Ausgaben + Zahlername (aus participants!)
     expenses = conn.execute('''
         SELECT e.*, p.name AS payer_name
         FROM expenses e
         JOIN participants p ON e.payer_id = p.id
         WHERE e.event_id = ?
         ORDER BY e.date DESC
-    ''', (event_id,)
-    ).fetchall()
+    ''', (event_id,)).fetchall()
+
+    
+    balances = {p['id']: 0.0 for p in participants}
+    id_to_name = {p['id']: p['name'] for p in participants}
+
+    rows = conn.execute('''
+        SELECT e.id AS expense_id, e.payer_id, ep.user_id, ep.amount_owed
+        FROM expenses e
+        JOIN expense_participants ep ON e.id = ep.expense_id
+        WHERE e.event_id = ? AND ep.paid = 0
+    ''', (event_id,)).fetchall()
+
+    for row in rows:
+        balances[row['payer_id']] -= row['amount_owed']
+        balances[row['user_id']] += row['amount_owed']
+
+    debtors = sorted([(uid, amt) for uid, amt in balances.items() if amt > 0], key=lambda x: x[1])
+    creditors = sorted([(uid, -amt) for uid, amt in balances.items() if amt < 0], key=lambda x: x[1])
+
+    summary = []
+    i, j = 0, 0
+    while i < len(debtors) and j < len(creditors):
+        debtor_id, debt_amt = debtors[i]
+        creditor_id, credit_amt = creditors[j]
+        amount = min(debt_amt, credit_amt)
+
+        summary.append({
+            'from': id_to_name[debtor_id],
+            'to': id_to_name[creditor_id],
+            'amount': round(amount, 2)
+        })
+
+        debtors[i] = (debtor_id, debt_amt - amount)
+        creditors[j] = (creditor_id, credit_amt - amount)
+
+        if debtors[i][1] == 0:
+            i += 1
+        if creditors[j][1] == 0:
+            j += 1
 
     conn.close()
 
-    return render_template('events/show.html', event=event, participants=participants, expenses=expenses)
+    return render_template(
+        'events/show.html',
+        event=event,
+        participants=participants,
+        expenses=expenses,
+        summary=summary
+    )
 
 
 @events_bp.route('/<int:event_id>/add_participant', methods=['POST'])
@@ -153,8 +198,8 @@ def add_expense(event_id):
 
         for participant_id in split_ids:
             conn.execute(
-                'INSERT INTO expense_participants (expense_id, user_id, amount_owed) VALUES (?, ?, ?)',
-                (expense_id, participant_id, split_amount)
+                'INSERT INTO expense_participants (expense_id, user_id, amount_owed, paid) VALUES (?, ?, ?, ?)',
+                (expense_id, participant_id, split_amount, 0)
             )
 
         conn.commit()

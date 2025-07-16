@@ -70,4 +70,34 @@
     <li>Schulden berechnen (bald verfügbar)</li>
   </ol>
 </div>
+
+{% if summary %}
+  <div class="card mt-4 border-info">
+    <div class="card-header bg-info text-white d-flex justify-content-between align-items-center">
+      <span>💸 Schuldenübersicht</span>
+      <a href="{{ url_for('expenses.summary', event_id=event.id) }}" class="btn btn-light btn-sm">
+        💳 Details anzeigen
+      </a>
+    </div>
+    <ul class="list-group list-group-flush">
+      {% for tx in summary %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <div>
+            <strong class="text-danger">{{ tx.from }}</strong>
+            <span class="mx-1">➡️</span>
+            <strong class="text-success">{{ tx.to }}</strong>
+          </div>
+          <span class="badge bg-primary rounded-pill">{{ tx.amount }} €</span>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% else %}
+  <div class="alert alert-success mt-4">
+    ✅ Alles ausgeglichen! Keine offenen Schulden in diesem Event.
+  </div>
+{% endif %}
+
+
+
 {% endblock %}
