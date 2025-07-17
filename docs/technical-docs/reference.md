@@ -36,7 +36,7 @@ nav_order: 3
 
 **Sample output:**
 
-c:\Users\User\Pictures\Screenshots\create.html.png
+![alt text](create.html.png)
 
 ---
 
@@ -52,8 +52,9 @@ c:\Users\User\Pictures\Screenshots\create.html.png
 
 **Sample output:**
 
-c:\Users\User\Pictures\Screenshots\show.html.png
+![alt text](show.html.png)
 ---
+
 ## Ausgaben hinzufügen
 
 ### `add_expense(event_id)`
@@ -66,7 +67,7 @@ c:\Users\User\Pictures\Screenshots\show.html.png
 
 **Sample output:**
 
-c:\Users\User\Pictures\Screenshots\add_expense.html.png
+![alt text](add_expense.html.png)
 ---
 
 ## Schuldenübersicht
