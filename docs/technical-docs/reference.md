@@ -36,50 +36,51 @@ nav_order: 3
 
 **Sample output:**
 
-![alt text](<Screenshot 2025-07-17 151059.png>)
+c:\Users\User\Pictures\Screenshots\create.html.png
 
 ---
 
-## [Example, delete this section] Show to-do lists
+## Eventübersicht
 
-### `get_lists()`
+### `show_event(event_id)`
 
-**Route:** `/lists/`
+**Route:** `/events/<int:event_id>`
 
 **Methods:** `GET`
 
-**Purpose:** Show all to-do lists.
+**Purpose:** Zeigt alle Ausgaben eines bestimmten Events. Dient als zentrale Übersicht pro Event mit Option zur weiteren Bearbeitung.
 
 **Sample output:**
 
-![get_lists() sample](../assets/images/fswd-intro_00.png)
+c:\Users\User\Pictures\Screenshots\show.html.png
+---
+## Ausgaben hinzufügen
 
+### `add_expense(event_id)`
+
+**Route:** `/events/<int:event_id>/expenses/add`
+
+**Methods:** `GET`,`POST`
+
+**Purpose:** Zeigt das Formular zur Hinzufügung neuer Ausgaben (`GET`) oder fügt eine neue Ausgabe in die Datenbank ein (`POST`).
+
+**Sample output:**
+
+c:\Users\User\Pictures\Screenshots\add_expense.html.png
 ---
 
-### `get_list_todos(list_id)`
+## Schuldenübersicht
 
-**Route:** `/lists/<int:list_id>`
+### `summary(event_id)`
 
-**Methods:** `GET`
-
-**Purpose:** Retrieve all to-do items of to-do list with ID `list_id` from database and present to user.
-
-**Sample output:**
-
-![get_list_todos() sample](../assets/images/fswd-intro_02.png)
-
----
-
-## [Example, delete this section] Insert sample data
-
-### `run_insert_sample()`
-
-**Route:** `/insert/sample`
+**Route:** `/events/<int:event_id>/summary`
 
 **Methods:** `GET`
 
-**Purpose:** Flush the database and insert sample data set
+**Purpose:** Diese Route berechnet, wie viel jeder Teilnehmer eines Events im Verhältnis zu den anderen bezahlt hat und erstellt eine kompakte Schuldenübersicht. Dabei wird so optimiert, dass möglichst wenige Transaktionen notwendig sind. Die Informationen werden als Übersicht aufbereitet und im Template `summary.html` angezeigt.
 
 **Sample output:**
 
-Browser shows: `Database flushed and populated with some sample data.`
+![alt text](<summary.html [1].png>)
+
+![alt text](<summary.html [2].png>)
