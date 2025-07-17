@@ -4,13 +4,6 @@
 {% block content %}
 <h2>Neue Ausgabe hinzufügen</h2>
 
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
-    {% for message in messages %}
-      <div class="alert alert-warning">{{ message }}</div>
-    {% endfor %}
-  {% endif %}
-{% endwith %}
 
 <form method="POST">
   <div class="mb-3">

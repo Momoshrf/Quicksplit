@@ -5,13 +5,7 @@
 <h2>{{ event.name }}</h2>
 <p><strong>Erstellt am:</strong> {{ event.created_at }}</p>
 
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
-    {% for message in messages %}
-      <div class="alert alert-info">{{ message }}</div>
-    {% endfor %}
-  {% endif %}
-{% endwith %}
+
 
 <a href="{{ url_for('events.list_events') }}" class="btn btn-secondary mb-3">← Zurück zu Events</a>
 
@@ -62,14 +56,6 @@
   </div>
 </div>
 
-<div class="alert alert-info">
-  <h5>Nächste Schritte:</h5>
-  <ol>
-    <li>Teilnehmer hinzufügen</li>
-    <li>Ausgaben eintragen</li>
-    <li>Schulden berechnen (bald verfügbar)</li>
-  </ol>
-</div>
 
 {% if summary %}
   <div class="card mt-4 border-info">
