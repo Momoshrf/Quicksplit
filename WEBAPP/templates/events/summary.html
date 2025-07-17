@@ -33,18 +33,18 @@
       <td><strong>{{ names[uid] }}</strong></td>
       <td>
         {% if saldo > 0 %}
-          <span class="text-success">💸 Forderung</span>
-        {% elif saldo < 0 %}
           <span class="text-danger">💰 Schulden</span>
+        {% elif saldo < 0 %}
+          <span class="text-success">💸 Forderung</span>
         {% else %}
           <span class="text-muted">✅ Ausgeglichen</span>
         {% endif %}
       </td>
       <td>
         {% if saldo > 0 %}
-          <span class="text-success">+{{ saldo | round(2) }} €</span>
+          <span class="text-danger">+{{ saldo | round(2) }} €</span>
         {% elif saldo < 0 %}
-          <span class="text-danger">{{ saldo | round(2) }} €</span>
+          <span class="text-success">{{ saldo | round(2) }} €</span>
         {% else %}
           <span class="text-muted">0,00 €</span>
         {% endif %}
