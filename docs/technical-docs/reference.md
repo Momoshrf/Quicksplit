@@ -24,19 +24,19 @@ nav_order: 3
 {: toc }
 </details>
 
-## [Section / module]
+## events.py
 
-### `function_definition()`
+### create_event()
 
-**Route:** `/route/`
+**Route:** `/events/create`
 
-**Methods:** `POST` `GET` `PATCH` `PUT` `DELETE`
+**Methods:** `GET`,`POST`
 
-**Purpose:** [Short explanation of what the function does and why]
+**Purpose:** Erstellt ein neues Event. Bei `GET` wird das Formular angezeigt, bei `POST` werden die Eventdaten in die Datenbank geschrieben und der Benutzer weitergeleitet.
 
 **Sample output:**
 
-[Show an image, string output, or similar illustration -- or write NONE if function generates no output]
+![alt text](<Screenshot 2025-07-17 151059.png>)
 
 ---
 

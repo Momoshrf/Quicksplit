@@ -30,8 +30,9 @@ Zahlungen eintragen und automatisch berechnen, wer wie viel
 zurückbekommt
 
 ## Target user
--Reisegruppen
--Freundeskreise bei gemeinsamen Aktivitäten
+-Reisegruppen (z. B. WG-Urlaub, Abifahrt, Roadtrips)
+-Freundeskreise bei Aktivitäten (z. B. Festivals, Geburtstagsplanung, Ausgehen)
+-WGs oder temporäre Haushalte
 
 ## Customer journey
 
