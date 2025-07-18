@@ -5,17 +5,10 @@ nav_order: 3
 ---
 
 {: .label }
-[Jane Dane]
+Arblir Meta & Mohamed Shiref
 
 {: .no_toc }
 # Reference documentation
-
-{: .attention }
-> This page collects internal functions, routes with their functions, and APIs (if any).
-> 
-> See [Uber](https://developer.uber.com/docs/drivers/references/api) or [PayPal](https://developer.paypal.com/api/rest/) for exemplary high-quality API reference documentation.
->
-> You may delete this `attention` box.
 
 <details open markdown="block">
 {: .text-delta }
@@ -24,11 +17,57 @@ nav_order: 3
 {: toc }
 </details>
 
-## events.py
+Diese Seite dokumentiert alle Routen und Funktionen der QuickSplit-Anwendung. Die Anwendung ist in mehrere Blueprints unterteilt für bessere Strukturierung.
 
-### create_event()
+## app.py (Hauptanwendung)
 
-**Route:** `/events/create`
+### `index()`
+
+**Route:** `/`
+
+**Methods:** `GET`
+
+**Purpose:** Startseite der Anwendung. Zeigt das Dashboard mit Willkommensnachricht und Navigation zu den wichtigsten Features.
+
+**Sample output:**
+
+![alt text](../assets/images/startseite.jpeg)
+
+---
+
+## auth.py (Authentifizierung)
+
+### `login()`
+
+**Route:** `/login`
+
+**Methods:** `GET`, `POST`
+
+**Purpose:** Benutzer-Login. Bei `GET` wird das Login-Formular angezeigt, bei `POST` wird die Authentifizierung durchgeführt.
+
+**Sample output:**
+
+![alt text](../assets/images/Login.png)
+
+### `register()`
+
+**Route:** `/register`
+
+**Methods:** `GET`, `POST`
+
+**Purpose:** Benutzer-Registrierung. Erstellt neue Benutzerkonten mit gehashten Passwörtern.
+
+**Sample output:**
+
+![alt text](../assets/images/Register.jpeg)
+
+---
+
+## events.py (Event-Verwaltung)
+
+### `create_event()`
+
+**Route:** `/events/new`
 
 **Methods:** `GET`,`POST`
 
@@ -36,11 +75,7 @@ nav_order: 3
 
 **Sample output:**
 
-![alt text](create.html.png)
-
----
-
-## Eventübersicht
+![alt text](../assets/images/create.html.png)
 
 ### `show_event(event_id)`
 
@@ -52,14 +87,11 @@ nav_order: 3
 
 **Sample output:**
 
-![alt text](show.html.png)
----
-
-## Ausgaben hinzufügen
+![alt text](../assets/images/show.html.png)
 
 ### `add_expense(event_id)`
 
-**Route:** `/events/<int:event_id>/expenses/add`
+**Route:** `/events/<int:event_id>/add_expense`
 
 **Methods:** `GET`,`POST`
 
@@ -67,14 +99,15 @@ nav_order: 3
 
 **Sample output:**
 
-![alt text](add_expense.html.png)
+![alt text](../assets/images/add_expense.html.png)
+
 ---
 
-## Schuldenübersicht
+## expenses.py (Ausgaben-Verwaltung)
 
 ### `summary(event_id)`
 
-**Route:** `/events/<int:event_id>/summary`
+**Route:** `/expenses/<int:event_id>/summary`
 
 **Methods:** `GET`
 
@@ -82,6 +115,16 @@ nav_order: 3
 
 **Sample output:**
 
-![alt text](<summary.html [1].png>)
+![alt text](../assets/images/summary.html1.png)
 
-![alt text](<summary.html [2].png>)
+![alt text](../assets/images/summary.html2.png)
+
+---
+
+## Templates
+
+Die Anwendung verwendet Jinja2-Templates mit Bootstrap für ein responsives Design. Flash Messages werden für User-Feedback verwendet.
+
+## Datenbank
+
+SQLite-Datenbank mit Row-Factory für dictionary-ähnlichen Zugriff. Siehe [Data Model](data-model.md) für Details.

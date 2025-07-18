@@ -47,6 +47,23 @@ Hier sammeln wir alle Sachen die wir gegoogelt haben beim Programmieren.
 - [Stack Overflow: Flask static files](https://stackoverflow.com/questions/20646822/how-to-serve-static-files-in-flask) - CSS Datei wurde nicht geladen
 - [Flask url_for()](https://stackoverflow.com/questions/7478366/create-dynamic-urls-in-flask-with-url-for) - url_for('static') für CSS
 
+## Authentication & Sessions
+
+**Session Management:**
+- [Flask Sessions Tutorial](https://pythonbasics.org/flask-sessions/) - wie Flask Sessions funktionieren
+- [Stack Overflow: Flask Session](https://stackoverflow.com/questions/27611216/how-to-get-a-variable-from-the-url-in-flask) - session['user_id'] und so
+- [Werkzeug Password Hashing](https://werkzeug.palletsprojects.com/en/2.0.x/utils/#werkzeug.security.generate_password_hash) - sichere Passwörter
+
+**Login/Logout:**
+- [Real Python: Flask Login](https://realpython.com/using-flask-login-for-user-management/) - zu komplex für uns, aber interessant
+- [Stack Overflow: Flask redirect](https://stackoverflow.com/questions/14343812/redirecting-to-url-in-flask) - redirect nach Login
+
+## Flash Messages
+
+**Flash Messages:**
+- [Flask Flash Messages](https://flask.palletsprojects.com/en/2.0.x/patterns/flashing/) - offizielle Doku
+- [Stack Overflow: Flash categories](https://stackoverflow.com/questions/34902378/where-do-i-get-the-flask-flash-categories) - message categories
+
 ## Random Stuff das geholfen hat
 
 **Design Inspiration:**
