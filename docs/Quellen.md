@@ -77,6 +77,11 @@ Hier sammeln wir alle Sachen die wir gegoogelt haben beim Programmieren.
 - [MDN Web Docs](https://developer.mozilla.org/) - für CSS Eigenschaften
 - [Python.org](https://docs.python.org/3/) - offizielle Python Doku
 
+## ChatGPT Verlauf
+
+**ChatGPT Links:**
+- [1](https://chatgpt.com/share/68793925-8ef0-800d-b076-c22e6256f768) ---> [PDF](/assets/PDF/ChatGpt-Verlauf-1.pdf)
+- [2](https://chatgpt.com/share/68793d84-73ec-800d-af46-55328020e6e0) ---> [PDF](/assets/PDF/ChatGpt-Verlauf-2.pdf)
 
 
 
