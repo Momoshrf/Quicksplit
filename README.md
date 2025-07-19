@@ -19,25 +19,25 @@ Die vollständige Projektdokumentation findest du hier:
 git clone http://github.com/Momoshrf/Quicksplit.git
 
 
-### 2. Virtual Environment erstellen (empfohlen)
+## 2. Virtual Environment erstellen (empfohlen)
 
-# Virtual Environment erstellen
+### Virtual Environment erstellen
 python3 -m venv venv
 
-# Aktivieren
-# Mac/Linux:
+## Aktivieren
+### Mac/Linux:
 source venv/bin/activate
-# Windows:
+### Windows:
 venv\Scripts\activate
 
 
-### 3. Dependencies installieren
+## 3. Dependencies installieren
 
 cd WEBAPP
 pip install -r requirements.txt
 
 
-### 4. App starten
+## 4. App starten
 
 python3 app.py
 
