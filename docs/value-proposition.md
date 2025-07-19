@@ -38,7 +38,7 @@ zurückbekommt
 
 **Beispiel: Lisa und 3 Freunde fahren nach Amsterdam**
 
-1. **Vor der Reise**: Lisa googelt "Ausgaben aufteilen App" → findet QuickSplit
+1. **Vor der Reise**: Lisa googelt "Ausgaben aufteilen App" -> findet QuickSplit
 2. **Registrierung**: Lisa erstellt Account (30 Sekunden)
 3. **Event erstellen**: "Amsterdam Trip" -> Event-Link an Freunde senden
 4. **Teilnehmer hinzufügen**: 
