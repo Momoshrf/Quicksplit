@@ -4,7 +4,7 @@ nav_order: 4
 ---
 
 {: .label }
-[Jane Dane]
+Arblir Meta & Mohamed Shiref
 
 {: .no_toc }
 # User evaluation
@@ -16,30 +16,73 @@ nav_order: 4
 {: toc }
 </details>
 
-## 01: [Title]
+## 01: Usability Test - Grundfunktionen
 
 ### Meta
 
 Status
-: **Work in progress** - Done - Obsolete
+: Work in progress - **Done** - Obsolete
 
 Updated
-: DD-MMM-YYYY
+: 18-Jul-2025
 
 ### Goal
 
-[Describe the goal of this evaluation, for example as a research question like: "How long does it take to register a new account and what is the drop-out rate?"]
+Wie intuitiv ist die Nutzung von QuickSplit für neue Benutzer? Können sie ohne Anleitung ein Event erstellen und Ausgaben aufteilen? Welche Probleme treten bei der ersten Nutzung auf?
 
 ### Method
 
-[Describe how you proceed to achieve your evaluation goal. Be as specific as possible: others should be able to replicate your evaluation by following the description on this section.]
+**Testpersonen:** 2 Freunde von uns (Taha 23, Julian 25) - beide haben noch nie sowas wie Splitwise oder ähnliche Apps benutzt
+
+**Testaufgaben ohne Anleitung:**
+1. Account registrieren und einloggen
+2. Event "Kino-Abend" erstellen  
+3. 2 lokale Teilnehmer hinzufügen (Anna, Ben)
+4. Ausgabe "Kinokarten" (€36) hinzufügen - bezahlt von dir, geteilt durch alle
+5. Ausgabe "Popcorn" (€12) hinzufügen - bezahlt von Anna, nur du und Anna beteiligt
+6. Zur Abrechnung navigieren und verstehen, wer wem wieviel schuldet
+
+**Beobachtung:** Haben zugeschaut und Notizen gemacht, grobe Zeiten gestoppt.
 
 ### Results
 
-[Present the main results of your evaluation, for example: "On average, users need 3 min to register. The drop-out rate was 70%. Users that didn't complete provided the following reasons: ..."]
+**Registrierung/Login:** Beide erfolgreich (ca. 1-2 min)
+- "Username und Passwort, easy"
+
+**Event erstellen:** Beide erfolgreich (unter 1 min)  
+- Taha: "Das war einfach, nur Name eingeben"
+
+**Teilnehmer hinzufügen:** Beide erfolgreich (unter 1 min)
+- Julian brauchte etwas länger um den Button zu finden
+- "Ach da, hätte ich auch selber drauf kommen können"
+
+**Erste Ausgabe:** Beide erfolgreich (unter 1 min)
+- Taha: "Die Emojis sind cool, macht es übersichtlicher"
+- Aufteilung auf alle war klar
+
+**Zweite Ausgabe:** Beide erfolgreich (unter 1 min)
+- **Julian war zunächst verwirrt:** "Wie kann ich nur bestimmte Leute auswählen?"
+- Hat die Checkboxen erst beim zweiten Hinschauen gesehen
+- Taha: "Ach so, man kann die Häkchen einzeln setzen"
+- Beide brauchten etwas länger, aber haben es dann verstanden
+
+**Abrechnung verstehen:** Beide erfolgreich
+- Julian: "Okay cool, ich seh wer mir was schuldet"
+- Taha: "Das ist übersichtlich"
 
 ### Implications
 
-[What did you learn from this evaluation and what will you change to improve? Example: "We aim to decrease the drop-out rate by not asking for a birth date. We will re-run this evaluation to measure the impact."]
+**Was gut lief:**
+- Registrierung und Event-Erstellung sind intuitiv
+- Emojis kommen gut an und helfen bei der Navigation
+- Grundfunktionen funktionieren ohne Erklärung
 
----
+**Kleine Verbesserungsmöglichkeit:**
+- Individuelle Ausgaben-Aufteilung braucht etwas mehr Zeit zum Verstehen
+- Checkboxen könnten etwas auffälliger gestaltet werden
+- User finden es aber nach kurzem Suchen selbstständig
+
+**Was wir daraus gelernt haben:**
+Die individuelle Ausgaben-Aufteilung ist das einzige Feature, bei dem User kurz nachdenken müssen. Das ist aber normal - komplexere Funktionen brauchen etwas mehr Zeit. Wichtig ist, dass beide es letztendlich alleine geschafft haben.
+
+**Fazit:** Die App ist insgesamt sehr benutzerfreundlich. Die Checkboxen könnten etwas prominenter sein, aber es ist kein kritisches Problem.

@@ -5,7 +5,7 @@ nav_order: 3
 ---
 
 {: .label }
-[Jane Dane]
+Arblir Meta & Mohamed Shiref
 
 {: .no_toc }
 # Peer review
@@ -17,16 +17,30 @@ nav_order: 3
 {: toc }
 </details>
 
-## [team member] - review 1
+## Mohamed Shiref - Review von Arblir Meta
 
 ### My observation (Wahrnehmung)
 
-[A specific observation, regarding know-how, effectiveness, team work or from another relevant area]
+Mohamed hat sich sehr gut um das Frontend und die Templates gekümmert. Er hatte oft gute Ideen für das UI-Design und hat die Emojis vorgeschlagen, die unsere App freundlicher machen. Beim CSS-Styling hat er viel experimentiert und die Bootstrap-Integration sauber hinbekommen.
 
 ### Effect on me (Wirkung)
 
-[What positive or negative effect did this observation have on the reviewer?]
+Das hat mir geholfen, mich auf die Backend-Logik zu konzentrieren, ohne mir Sorgen um das Design machen zu müssen. Seine Vorschläge haben die App definitiv benutzerfreundlicher gemacht. Manchmal war er aber etwas zu perfektionistisch beim Styling.
 
 ### Tip for the future (Wunsch)
 
-[What should be changed or strengthened for the point of view of the reviewer?]
+Beim nächsten Projekt könntest du früher kommunizieren, wenn du bei technischen Problemen stecken bleibst. Ansonsten super Teamwork!
+
+## Arblir Meta - Review von Mohamed Shiref  
+
+### My observation (Wahrnehmung)
+
+Arblir hat die komplette Backend-Architektur aufgebaut und das Datenbank-Design sehr durchdacht gemacht. Er versteht Flask und SQLite richtig gut und konnte mir oft bei technischen Fragen helfen. Die Dokumentation hat er auch sehr strukturiert geschrieben.
+
+### Effect on me (Wirkung)
+
+Ich konnte mich darauf verlassen, dass die Backend-Funktionen funktionieren, und habe viel über Datenbanken gelernt. Manchmal war sein Code aber etwas zu komplex für mich zum Verstehen, besonders bei den SQL-Queries.
+
+### Tip for the future (Wunsch)
+
+Erklär technische Entscheidungen etwas mehr im Detail, damit ich besser mithalten kann. Aber insgesamt hast du das Backend sehr professionell aufgebaut!
