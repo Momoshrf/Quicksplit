@@ -21,7 +21,7 @@ Arblir Meta & Mohamed Shiref
 
 ### My observation (Wahrnehmung)
 
-Mohamed hat sich sehr gut um das Frontend und die Templates gekümmert. Er hatte oft gute Ideen für das UI-Design und hat die Emojis vorgeschlagen, die unsere App freundlicher machen. Beim CSS-Styling hat er viel experimentiert und die Bootstrap-Integration sauber hinbekommen.
+Mohamed hat sich sehr gut um das Frontend und die Templates gekümmert. Er hatte oft gute Ideen für das UI-Design und hat die Emojis vorgeschlagen, die unsere App freundlicher machen. Beim CSS-Styling hat er viel experimentiert und die Bootstrap-Integration sauber hinbekommen. Die Event-Erstellung und -Verwaltung hat er sehr durchdacht implementiert.
 
 ### Effect on me (Wirkung)
 

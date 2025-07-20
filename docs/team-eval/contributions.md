@@ -22,14 +22,14 @@ Arblir Meta & Mohamed Shiref
 Contributions
 : Flask-App Setup und Grundstruktur (`app.py`, Blueprints)
 : Authentifizierung System (`auth.py`, Session-Management)
-: Event-Verwaltung (`events.py`, Event-Erstellung und -Anzeige)
+: Ausgaben-Verwaltung (`expenses.py`, Berechnungslogik)
 : Datenbank-Schema Design (`database.py`)
 : Hauptdokumentation (Architecture, Data Model, Design Decisions)
 
 ## Mohamed Shiref
 
 Contributions
-: Ausgaben-Verwaltung (`expenses.py`, Berechnungslogik)
+: Event-Verwaltung (`events.py`, Event-Erstellung und -Anzeige)
 : Templates und UI Design (HTML, Bootstrap Integration)
 : CSS-Styling (`style.css`, Custom Design)
 : Schulden-Berechnung und Summary-Funktionalität
