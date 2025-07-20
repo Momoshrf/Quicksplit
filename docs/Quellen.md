@@ -8,10 +8,10 @@ Hier sammeln wir alle Sachen die wir gegoogelt haben beim Programmieren.
 ## Datenbank (SQLite)
 
 **Das hat funktioniert:**
-- [YouTube: SQLite Tutorial for Beginners](https://www.youtube.com/watch?v=byHcYRpMgI4) - 20 Min Video, gut erklärt
+- [YouTube: SQLite Tutorial for Beginners](https://www.youtube.com/watch?v=byHcYRpMgI4) - nur erste 20 Min angeschaut, gut erklärt
 - [W3Schools SQL Tutorial](https://www.w3schools.com/sql/) - für CREATE TABLE syntax 
 - [Python SQLite3 Tutorial](https://docs.python.org/3/library/sqlite3.html) - offizielle Doku (ziemlich trocken aber vollständig)
-- [Real Python: SQLite Tutorial](https://realpython.com/python-sqlite-database/) - viel besser erklärt als die offizielle Doku
+- [Real Python: SQLite Tutorial](https://realpython.com/python-sqlite-sqlalchemy/) - viel besser erklärt als die offizielle Doku
 
 **Spezielle Probleme:**
 - [Stack Overflow: SQLite Foreign Keys](https://stackoverflow.com/questions/1884818/how-do-i-add-a-foreign-key-to-an-existing-sqlite-table) - Foreign Keys waren verwirrend
@@ -31,8 +31,7 @@ Hier sammeln wir alle Sachen die wir gegoogelt haben beim Programmieren.
 - [W3Schools Bootstrap Tutorial](https://www.w3schools.com/bootstrap5/) - einfacher als die offizielle Doku
 - [CSS Gradient Generator](https://cssgradient.io/) - den Gradient haben wir einfach generiert und kopiert
 
-**Stack Overflow Rettung:**
-- [Jumbotron Bootstrap 5](https://stackoverflow.com/questions/65847844/how-to-create-a-jumbotron-in-bootstrap-5) - Jumbotron gibt es nicht mehr! 
+**Stack Overflow Rettung:** 
 - [CSS Hover Effects](https://stackoverflow.com/questions/14263594/how-to-show-transition-effect-on-hover-in-css) - für die Karten-Animation
 
 ## Flask Templates - laufend
@@ -55,7 +54,6 @@ Hier sammeln wir alle Sachen die wir gegoogelt haben beim Programmieren.
 - [Werkzeug Password Hashing](https://werkzeug.palletsprojects.com/en/2.0.x/utils/#werkzeug.security.generate_password_hash) - sichere Passwörter
 
 **Login/Logout:**
-- [Real Python: Flask Login](https://realpython.com/using-flask-login-for-user-management/) - zu komplex für uns, aber interessant
 - [Stack Overflow: Flask redirect](https://stackoverflow.com/questions/14343812/redirecting-to-url-in-flask) - redirect nach Login
 
 ## Flash Messages
