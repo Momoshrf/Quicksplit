@@ -7,6 +7,7 @@ Web Development (HWR Berlin, SoSe 2025)
 
 Die vollständige Projektdokumentation findest du hier:
 **[https://momoshrf.github.io/Quicksplit/](https://momoshrf.github.io/Quicksplit/)**
+Unsere Präsentations PDF befindet sich hier: /docs/assets/PDF/QuickSplit_Präsentation_Meta_Shiref.pdf
 
 ## Installation & Setup
 
